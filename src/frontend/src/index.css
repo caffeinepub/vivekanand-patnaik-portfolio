@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 200 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.875rem;
+    /* Dark space portfolio — all dark-first */
+    /* Background: deep navy #060A14 → OKLCH ~0.08 0.025 256 */
+    --background: 0.08 0.025 256;
+    /* Foreground: near-white #EAF0FF → OKLCH ~0.94 0.02 247 */
+    --foreground: 0.94 0.02 247;
+    /* Card: glass dark rgba(20,28,45) → OKLCH ~0.13 0.03 256 */
+    --card: 0.13 0.03 256;
+    --card-foreground: 0.94 0.02 247;
+    --popover: 0.16 0.035 256;
+    --popover-foreground: 0.94 0.02 247;
+    /* Primary: electric blue #3EA6FF → OKLCH ~0.66 0.18 242 */
+    --primary: 0.66 0.18 242;
+    --primary-foreground: 0.08 0.025 256;
+    /* Secondary: muted glass */
+    --secondary: 0.18 0.04 256;
+    --secondary-foreground: 0.94 0.02 247;
+    /* Muted: cool gray #A7B0C6 → OKLCH ~0.73 0.03 253 */
+    --muted: 0.18 0.03 256;
+    --muted-foreground: 0.73 0.03 253;
+    /* Accent: violet #8B5CF6 → OKLCH ~0.56 0.22 291 */
+    --accent: 0.56 0.22 291;
+    --accent-foreground: 0.94 0.02 247;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.94 0.02 247;
+    /* Border: rgba(255,255,255,0.08) subtle white */
+    --border: 0.94 0 0 / 8%;
+    --input: 0.94 0 0 / 12%;
+    --ring: 0.66 0.18 242;
+    /* Chart colors */
+    --chart-1: 0.66 0.18 242;
+    --chart-2: 0.72 0.16 202;
+    --chart-3: 0.56 0.22 291;
+    --chart-4: 0.68 0.2 220;
+    --chart-5: 0.75 0.15 180;
+    /* Sidebar */
+    --sidebar: 0.1 0.028 256;
+    --sidebar-foreground: 0.94 0.02 247;
+    --sidebar-primary: 0.66 0.18 242;
+    --sidebar-primary-foreground: 0.08 0.025 256;
+    --sidebar-accent: 0.18 0.04 256;
+    --sidebar-accent-foreground: 0.94 0.02 247;
+    --sidebar-border: 0.94 0 0 / 8%;
+    --sidebar-ring: 0.66 0.18 242;
+    /* Custom portfolio tokens */
+    --neon-blue: 0.66 0.18 242;
+    --neon-cyan: 0.83 0.14 202;
+    --neon-violet: 0.56 0.22 291;
+    --neon-magenta: 0.67 0.2 320;
+    --text-secondary: 0.73 0.03 253;
+    --text-muted: 0.58 0.025 255;
+    --glow-blue: 0.66 0.18 242;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "General Sans", "Satoshi", system-ui, sans-serif;
+    background: linear-gradient(135deg, #060a14 0%, #0b1022 50%, #0d0818 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060a14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(62, 166, 255, 0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(62, 166, 255, 0.6);
+  }
+}
+
+@layer utilities {
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #3ea6ff 0%, #6fe7ff 50%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-violet {
+    background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: rgba(20, 28, 45, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0
+      rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+  }
+
+  .glass-nav {
+    background: rgba(10, 14, 28, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .neon-glow-blue {
+    box-shadow: 0 0 20px rgba(62, 166, 255, 0.4), 0 0 60px
+      rgba(62, 166, 255, 0.15);
+  }
+
+  .neon-glow-violet {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 60px
+      rgba(139, 92, 246, 0.15);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #3ea6ff 0%, #8b5cf6 100%);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 1.0);
+  }
+
+  .btn-gradient:hover {
+    background: linear-gradient(135deg, #5bb8ff 0%, #a070ff 100%);
+    box-shadow: 0 0 30px rgba(62, 166, 255, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .section-heading {
+    font-size: clamp(1.75rem, 3vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #eaf0ff;
+  }
+
+  .corner-glow-tl {
+    background: radial-gradient(
+      ellipse 600px 400px at 0% 0%,
+      rgba(58, 27, 106, 0.4) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .corner-glow-br {
+    background: radial-gradient(
+      ellipse 600px 400px at 100% 100%,
+      rgba(30, 50, 120, 0.35) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+}
